@@ -1,0 +1,441 @@
+{
+    "openapi":"3.0.0",
+    "info":{
+        "description":"Restful API",
+        "version":"2.0.0",
+        "title":"Bank Account"
+    },
+    "servers": [
+        {
+          "url": "/"
+        }
+      ],
+      "tags": [
+        {
+          "name": "使用者"        
+        },{
+          "name": "帳戶"
+        }
+      ],
+      "paths": {
+        "/user/{id}": {
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "User ID",
+              "type": "string"
+            }
+          ],
+          "get": {
+            "tags": [
+              "使用者"
+            ],
+            "summary": "取得一筆使用者",
+            "responses": {
+              "200": {
+                "description": "OK"
+              }
+            }
+          },"delete": {
+            "summary": "刪除一筆使用者資料",
+            "tags": [
+              "使用者"
+            ],
+            "responses": {
+              "204": {
+                "description": "OK",
+                "schema": {
+                  "$ref": "#/components/schemas/id"
+                }
+              },
+              "400": {
+                "description": "Failed. Misunderstood Request."
+              },
+              "404": {
+                "description": "Failed. Request not found."
+              }
+            }
+          },
+          "patch": {
+            "tags": [
+              "使用者"
+            ],
+            "summary": "修改一筆使用者資料",
+            "requestBody": {
+              "description": "JSON",
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/userInformation"
+                  }
+                }
+              }
+            },
+            "produces": [
+              "application/json"
+            ],
+            "responses": {
+              "200": {
+                "description": "OK",
+                "schema": {
+                  "$ref": "#/components/schemas/id"
+                }
+              },
+              "400": {
+                "description": "Failed. Bad post data."
+              },
+              "404": {
+                "description": "Failed. Request not found."
+              }
+            }
+          }
+        },
+        "/users": {
+          "get": {
+            "tags": [
+              "使用者"
+            ],
+            "summary": "取得所有使用者",
+            "responses": {
+              "200": {
+                "description": "OK"
+                
+              }
+            }
+          },
+          "post": {
+            "tags": [
+              "使用者"
+            ],
+            "summary": "增加一筆使用者",
+            "requestBody": {
+              "description": "JSON",
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/userInformation"
+                  }
+                }
+              }
+            },
+            "produces": [
+              "application/json"
+            ],
+            "responses": {
+              "201": {
+                "description": "OK",
+                "schema": {
+                  "$ref": "#/components/schemas/id"
+                }
+              },
+              "400": {
+                "description": "Failed. Bad post data."
+              },
+              "404": {
+                "description": "Failed. Request not found."
+              }
+            }
+          }
+        },
+
+
+        "/user/{user_id}/account/{id}": {
+          "parameters": [
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "description": "User ID",
+              "type": "string"
+            },
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "Account ID",
+              "type": "string"
+            }
+          ],
+          "get": {
+            "tags": [
+              "帳戶"
+            ],
+            "summary": "取得使用者的一個帳戶",
+            "responses": {
+              "200": {
+                "description": "OK"
+              }
+            }
+          },"delete": {
+            "summary": "刪除使用者的一個帳戶",
+            "tags": [
+              "帳戶"
+            ],
+            "responses": {
+              "204": {
+                "description": "OK",
+                "schema": {
+                  "$ref": "#/components/schemas/id2"
+                }
+              },
+              "400": {
+                "description": "Failed. Misunderstood Request."
+              },
+              "404": {
+                "description": "Failed. Request not found."
+              }
+            }
+          },
+          "patch": {
+            "tags": [
+              "帳戶"
+            ],
+            "summary": "修改使用者的一個帳戶資訊",
+            "requestBody": {
+              "description": "JSON",
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/accountInformation"
+                  }
+                }
+              }
+            },
+            "produces": [
+              "application/json"
+            ],
+            "responses": {
+              "200": {
+                "description": "OK"
+              },
+              "400": {
+                "description": "Failed. Bad post data."
+              },
+              "404": {
+                "description": "Failed. Request not found."
+              }
+            }
+          }
+        },
+        "/user/{user_id}/accounts": {
+          "parameters": [
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "description": "User ID",
+              "type": "string"
+            }
+          ],
+          "get": {
+            "tags": [
+              "帳戶"
+            ],
+            "summary": "取得使用者的所有帳戶",
+            "responses": {
+              "200": {
+                "description": "OK"
+                
+              }
+            }
+          },
+          "post": {
+            "tags": [
+              "帳戶"
+            ],
+            "summary": "新增一個使用者的帳戶",
+            "requestBody": {
+              "description": "JSON",
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/accountInformation"
+                  }
+                }
+              }
+            },
+            "produces": [
+              "application/json"
+            ],
+            "responses": {
+              "201": {
+                "description": "OK"
+              },
+              "400": {
+                "description": "Failed. Bad post data."
+              },
+              "404": {
+                "description": "Failed. Request not found."
+              }
+            }
+          }
+        },
+        "/user/{user_id}/account/{id}/deposit": {
+          "parameters": [
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "description": "User ID",
+              "type": "string"
+            },
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "Account ID",
+              "type": "string"
+            }
+          ],
+          "post": {
+            "tags": [
+              "帳戶"
+            ],
+            "summary": "使用者一個帳戶存錢",
+            "requestBody": {
+              "description": "JSON",
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/money"
+                  }
+                }
+              }
+            },
+            "produces": [
+              "application/json"
+            ],
+            "responses": {
+              "201": {
+                "description": "OK"
+              },
+              "400": {
+                "description": "Failed. Bad post data."
+              },
+              "404": {
+                "description": "Failed. Request not found."
+              }
+            }
+          }
+        },
+        "/user/{user_id}/account/{id}/withdraw": {
+          "parameters": [
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "description": "User ID",
+              "type": "string"
+            },
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "Account ID",
+              "type": "string"
+            }
+          ],
+          "post": {
+            "tags": [
+              "帳戶"
+            ],
+            "summary": "使用者一個帳戶領錢",
+            "requestBody": {
+              "description": "JSON",
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/money"
+                  }
+                }
+              }
+            },
+            "produces": [
+              "application/json"
+            ],
+            "responses": {
+              "201": {
+                "description": "OK"
+              },
+              "400": {
+                "description": "Failed. Bad post data."
+              },
+              "404": {
+                "description": "Failed. Request not found."
+              }
+            }
+          }
+        }
+
+
+      },
+      "components": {
+        "schemas": {
+          "id": {
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          },
+          "id2": {
+            "properties": {
+              "user_id": {
+                "type": "string"
+              },"id": {
+                "type": "string"
+              }
+            }
+          },
+          "money": {
+            "properties": {
+              "money": {
+                "type": "number"
+              }
+            }
+          },
+          "userInformation": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "format": "string"
+              },
+              "gender": {
+                "type": "number",
+                "format": "number"
+              },
+              "birth": {
+                "type": "string",
+                "format": "date"
+              },
+              "note": {
+                "type": "string",
+                "format": "text"
+              }
+            }
+          },
+          "accountInformation": {
+            "type": "object",
+            "properties": {
+              "balance": {
+                "type": "number",
+                "format": "number"
+              },
+              "account_number": {
+                "type": "string",
+                "format": "number"
+              }            
+            }
+          }
+        }
+      }
+}

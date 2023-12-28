@@ -1,0 +1,10 @@
+mysqlclient
+Flask==3.0.0
+Werkzeug==3.0.1
+flask-swagger-ui
+Flask-RESTful
+PyMySQL
+flask_swagger_ui
+cryptography
+Flask-SQLAlchemy==3.1.1
+
