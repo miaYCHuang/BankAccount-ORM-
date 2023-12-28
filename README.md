@@ -55,33 +55,6 @@ wget "https://drive.google.com/u/0/uc?id=1uHDPIrcdzKoxPxQaY6f9M2V6v5gfEZeQ&expor
 docker-compose up -d
 ```
 
----
-> #### #下載AWS上的image需執行以下步驟
-> ```sh
->       image: 625565224680.dkr.ecr.ap-southeast-2.amazonaws.com/api:1.2
-> ```
-
-> 安裝AWS:
-> ```sh
-> sudo apt install awscli
-> aws configure
-> ```
-> aws configure為(需要請與我聯繫):
-> ```sh
-> 存取金鑰
-> 私密存取金鑰
-> 空格
-> 空格
-> ```
-
-> 擷取驗證字符並將 Docker 用戶端驗證至您的登錄檔。
-> 使用 AWS CLI：:
-> ```sh
-> aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 625565224680.dkr.ecr.ap-southeast-2.amazonaws.com
-> ```
----
-
-
 ### Usage example 使用範例
 IP需替換成自己環境的IP
 
@@ -110,4 +83,29 @@ port:80(勾選Http則無需再加入)
 port:3000
 
 
+---
+
+> #### #下載AWS上的image需執行以下步驟
+> ```sh
+>       image: 625565224680.dkr.ecr.ap-southeast-2.amazonaws.com/api:1.2
+> ```
+
+> 安裝AWS:
+> ```sh
+> sudo apt install awscli
+> aws configure
+> ```
+> aws configure為(需要請與我聯繫):
+> ```sh
+> 存取金鑰
+> 私密存取金鑰
+> 空格
+> 空格
+> ```
+
+> 擷取驗證字符並將 Docker 用戶端驗證至您的登錄檔。
+> 使用 AWS CLI：:
+> ```sh
+> aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 625565224680.dkr.ecr.ap-southeast-2.amazonaws.com
+> ```
 ---
