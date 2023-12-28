@@ -85,7 +85,7 @@ port:3000
 
 ---
 
-> #### #下載AWS上的image需執行以下步驟
+#### #下載AWS上的image需執行以下步驟
 > ```sh
 >       image: 625565224680.dkr.ecr.ap-southeast-2.amazonaws.com/api:1.2
 > ```
